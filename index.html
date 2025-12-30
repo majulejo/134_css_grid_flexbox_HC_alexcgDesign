@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link id="dynamic-favicon" rel="icon" type="image/svg+xml" />
+    <title>134_css_grid_flexbox_HC_alexcgDesign</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+        /* 1. RESET Y VARIABLES */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-color: #cacaca;
+            --texto: #616161;
+            --accent-blue: #0036ac;
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --panel-bg: rgba(184, 184, 184, 0.95);
+            --card-white: #ffffff;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: #333;
+            font-family: "Segoe UI", Roboto, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* 2. HEADER */
+        .header {
+            width: 100%;
+            text-align: center;
+            padding: 2.5rem 1rem 1.5rem;
+            background: rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: clamp(1.2rem, 5vw, 1.8rem);
+            color: #222;
+            margin-bottom: 0.5rem;
+        }
+
+        .header .autor-display {
+            opacity: 0.6;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 1.2rem;
+        }
+
+        /* 3. BARRA DE INFO */
+        .info-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 18px;
+            background: var(--card-white);
+            border-radius: 10px;
+            width: 85%;
+            max-width: 850px;
+            margin: 0 auto;
+            font-size: 0.8rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .info-item span:last-child {
+            font-family: monospace;
+            font-weight: bold;
+            color: var(--accent-blue);
+        }
+
+        /* 4. BOTONES SUPERIORES (MÁS PEQUEÑOS) */
+        .top-btn {
+            position: fixed;
+            top: 15px;
+            width: 36px;
+            /* Tamaño reducido de 45px a 36px */
+            height: 36px;
+            background: var(--card-white);
+            color: var(--accent-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            /* Radio ligeramente menor */
+            text-decoration: none;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            z-index: 2000;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+            font-size: 1rem;
+            /* Icono un poco más pequeño */
+        }
+
+        .top-btn:hover {
+            background: var(--accent-blue);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-left {
+            left: 15px;
+        }
+
+        .btn-right {
+            right: 15px;
+        }
+
+        /* 5. CONTENIDO PRINCIPAL */
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 20px;
+        }
+
+        .popover-btn {
+            background-color: var(--accent-blue);
+            padding: 0.7em 1.8em;
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        /* 6. FOOTER PANEL */
+        .footer-info {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%) translateY(100%);
+            width: 100%;
+            max-width: 900px;
+            padding: 25px;
+            background: var(--panel-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 25px 25px 0 0;
+            transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+            z-index: 1000;
+            box-shadow: 0 -8px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-info.visible {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            padding-bottom: 10px;
+        }
+
+        .footer-item {
+            background: #fff;
+            padding: 12px 18px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .footer-item strong {
+            color: var(--accent-blue);
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            min-width: 75px;
+        }
+
+        .footer-item input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            font-size: 0.9rem;
+            color: #444;
+            outline: none;
+        }
+
+        .copy-btn {
+            background: none;
+            border: none;
+            color: #ddd;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+
+        .copy-btn:hover {
+            color: var(--accent-blue);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-bar {
+                width: 95%;
+                font-size: 0.75rem;
+            }
+
+            .top-btn {
+                width: 32px;
+                height: 32px;
+                top: 10px;
+                font-size: 0.9rem;
+            }
+
+            .btn-left {
+                left: 10px;
+            }
+
+            .btn-right {
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <button class="top-btn btn-left" id="toggleBtn" title="Información">
+        <i class="fa-solid fa-circle-info"></i>
+    </button>
+
+    <a href="https://jolejuma.page.gd/varios/favicon_creator.html"
+        target="_blank" class="top-btn btn-right" title="Favicon Creator">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+    </a>
+
+    <header class="header">
+        <h1>APRENDE CSS Grid & Flexbox (+ Practicas!) </h1>
+    </header>
+    <div class="container">
+        <div class="element element1">#1</div>
+        <div class="element element2">#2</div>
+        <div class="element element3">#3</div>
+    </div>
+
+
+    <footer class="footer-info" id="footerPanel">
+        <div class="footer-grid">
+            <div class="footer-item">
+                <strong>Título</strong>
+                <input type="text"
+                    value="APRENDE CSS Grid & Flexbox (+ Practicas!) "
+                    id="f-titulo" readonly>
+                <button class="copy-btn" onclick="copiar('f-titulo')"><i
+                        class="fa-regular fa-copy"></i></button>
+            </div>
+            <div class="footer-item">
+                <strong>ID Proyecto</strong>
+                <input type="text" value="134_css_grid_flexbox_HC_alexcgDesign"
+                    id="f-id" readonly>
+                <button class="copy-btn" onclick="copiar('f-id')"><i
+                        class="fa-regular fa-copy"></i></button>
+            </div>
+            <div class="footer-item">
+                <strong>Autor</strong>
+                <input type="text" value="Coding2GO" id="f-autor" readonly>
+                <button class="copy-btn" onclick="copiar('f-autor')"><i
+                        class="fa-regular fa-copy"></i></button>
+            </div>
+            <div class="footer-item">
+                <strong>YouTube</strong>
+                <input type="text"
+                    value="https://www.youtube.com/watch?v=VJ212PHVmAk"
+                    id="f-link" readonly>
+                <button class="copy-btn" onclick="copiar('f-link')"><i
+                        class="fa-regular fa-copy"></i></button>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const footer = document.getElementById('footerPanel');
+        const btn = document.getElementById('toggleBtn');
+
+        btn.onclick = () => {
+            footer.classList.toggle('visible');
+            const icon = btn.querySelector('i');
+            if (footer.classList.contains('visible')) {
+                icon.className = 'fa-solid fa-xmark';
+                btn.style.background = 'var(--accent-blue)';
+                btn.style.color = 'white';
+            } else {
+                icon.className = 'fa-solid fa-circle-info';
+                btn.style.background = 'white';
+                btn.style.color = 'var(--accent-blue)';
+            }
+        };
+
+        function copiar(id) {
+            const el = document.getElementById(id);
+            el.select();
+            document.execCommand('copy');
+            const button = el.nextElementSibling;
+            const original = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-check" style="color: #2ecc71"></i>';
+            setTimeout(() => button.innerHTML = original, 1500);
+        }
+    </script>
+</body>
+
+</html>

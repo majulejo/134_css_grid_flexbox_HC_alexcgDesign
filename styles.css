@@ -1,0 +1,71 @@
+body {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.container {
+  width: 90%;
+  max-width: 800px;
+  min-height: 600px;
+  margin: 80px auto;
+  border: 3px solid #000;
+  display: flex;
+  /* flex-direction: row;*/
+  /*flex-direction: row-reverse;*/
+  /*flex-direction: column*/
+  /*flex-direction: column-reverse*/
+  /*flex-wrap: nowrap;*/
+  /* flex-wrap: wrap; */
+  /*flex-wrap: wrap-reverse;*/
+
+  /*justify-content: flex-start; /*alinea al principio del main axis */
+  /*justify-content: flex-end; /*  alinea al final del main axis */
+  /*justify-content: center; /*  alinea al centro del main axis */
+  /*justify-content: space-between; /*  alinea a los lados del main axis */
+  /*justify-content: space-around; /*  reparte todo el espacio entre los elementos */
+  /*justify-content: space-evenly; /*  espacio equitativo hacia todos  los lados */
+  /*align-items: stretch; /*permite modificar el cross-axis hay que eliminar el height Ocupa todo el contenedor*/
+  /*align-items: flex-start; /*manda los elementos al principio del cross-axis*/
+  /*align-items: flex-end; /*manda los elementos al final del cross-axis*/
+  /*align-items: center; /*manda los elementos al centro del cross-axis*/
+  /*align-items: baseline; /*manda los elementos al final del cross-axis*/
+  /*align-content: flex-start; /*se usa para cuando hay varios elementos y ocupan varias filas*/
+  /*align-content: flex-end;
+ /*align-content: center;
+ /*align-content: space-between;
+ /*align-content: space-evenly;
+ /*align-content: space-around; */
+}
+
+.element {
+  color: #fff;
+  font-size: 2rem;
+  text-align: center;
+  line-height: 100px;
+  width: 300px;
+  height: 100px;
+  order: 0;
+  /* flex-grow: 1; */
+  /* flex-shrink: 0; */
+  flex-basis: 150px; /*indica el tamaño de los elementos en el main-axis*/
+}
+
+.element1 {
+  background-color: crimson;
+  order: 2;
+  /* align-self: center;   permite alinear el elemento en el cross-axis */
+  /* align-self: flex-start; permite alinear el elemento en el cross-axis */
+  /* align-self: flex-end;   permite alinear el elemento en el cross-axis*/
+  /*align-self: stretch;   permite alinear el elemento en el cross-axis*/
+  /*align-self: baseline;  permite alinear el elemento en el cross-axis */
+}
+
+.element2 {
+  background-color: purple;
+  order: 1;
+  /* flex-grow: 2;    cuanto crece */
+  /* flex-shrink: 3; cuanto disminuye */
+}
+
+.element3 {
+  background-color: steelblue;
+}
