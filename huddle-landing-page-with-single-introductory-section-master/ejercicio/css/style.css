@@ -19,7 +19,6 @@
 
 body {
   font-family: var(--open-sans);
-  background-color: rgb(194, 228, 228);
 }
 
 .container {
@@ -33,7 +32,7 @@ body {
 .hero {
   min-height: 100vh;
   position: relative;
-  --wave-bottom: url("../images/bg-mobile.svg");
+  --wave-bottom: url("../images/wave-top.svg");
 }
 
 .hero__nav {
@@ -86,6 +85,7 @@ body {
   padding: 16px 30px;
   border-radius: 30px;
   margin-top: 16px;
+  font-weight: 600;
 }
 
 .hero__picture {
@@ -122,10 +122,13 @@ body {
 
 .wave {
   position: absolute;
-  width: 100%;
+  left: 0;
+  right: 0;
+  width: auto;
   height: 100px;
   background-repeat: no-repeat;
   background-size: 100% 100px;
+  z-index: -1;
 }
 
 .wave--bottom {
@@ -138,4 +141,173 @@ body {
   left: 0;
   top: 0;
   background-image: var(--wave-top);
+}
+
+.section {
+  background-color: var(--very-pale-blue);
+  --padding-container: 110px 0;
+}
+
+.section--white {
+  background-color: #fff;
+  position: relative;
+
+  --padding-container: 210px 0;
+
+  --wave-top: url("../images/wave-top.svg");
+  --wave-bottom: url("../images/wave-bottom.svg");
+}
+
+.section__container {
+  display: flex;
+  flex-direction: column;
+}
+
+.section__img {
+  width: 100%;
+  max-width: 350px;
+  display: block;
+  margin: 0 auto;
+}
+
+.section__texts {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.subtitle {
+  margin-bottom: 16px;
+  font-family: var(--poppins);
+}
+
+.question {
+  position: relative;
+  text-align: center;
+
+  --wave-top: url("../images/wave-top-question.svg");
+  --wave-bottom: url("../images/wave-bottom-question.svg");
+
+  --padding-container: 190px 0 210px;
+}
+
+.footer {
+  background-color: var(--very-darh-cian);
+  color: #fff;
+}
+
+.footer__title {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+  font-family: var(--poppins);
+}
+
+.footer__paragraph {
+  line-height: 1.5;
+  margin: 16px 50px;
+}
+
+.footer__form {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 80px;
+}
+
+.footer__input {
+  flex-basis: 100%;
+  flex-grow: 1;
+  font-size: 16px;
+  font-family: var(--open-sans);
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  padding: 16px 6px;
+  margin-bottom: 20px;
+}
+
+.footer__cta {
+  font-size: 16px;
+  font-family: var(--open-sans);
+  background-color: var(--pink);
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 40px;
+  font-weight: 600;
+  margin-left: auto;
+}
+
+.footer__contact {
+  line-height: 50px;
+}
+
+.footer__contact::after {
+  content: "Phone: +1-456-456-4567";
+  margin-left: 10px;
+}
+
+.footer__contact--email::after {
+  content: " huddle@huddle.com";
+}
+
+.footer__social {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.footer__link {
+  text-decoration: none;
+  width: 40px;
+}
+
+.footer__icon {
+  width: 100%;
+  display: block;
+}
+
+.footer__logo {
+  width: 65%;
+  max-width: 260px;
+}
+
+@media (min-width: 768px) {
+  .hero {
+    --wave-bottom: url("..images/bg-desktop.svg");
+  }
+  .hero__title {
+    font-size: 48px;
+  }
+  .hero__paragraph {
+    width: 70%;
+  }
+  .cta {
+    padding: 16px 45px;
+  }
+  .hero__numbers {
+    justify-content: space-around;
+    flex-direction: row;
+  }
+  .section--white {
+    --wave-top: url("../images/bg-desktop.svg");
+    --wave-bottom: url("../images/bg-desktop.svg");
+  }
+  .section__container {
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .section__container--inverse {
+    flex-direction: row;
+  }
+  .section__picture {
+    width: 50%;
+  }
+  .section__texts {
+    width: 45%;
+    margin: 0;
+    text-align: start;
+  }
 }
