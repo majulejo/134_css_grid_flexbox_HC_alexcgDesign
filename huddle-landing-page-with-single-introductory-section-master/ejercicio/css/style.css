@@ -128,7 +128,6 @@ body {
   height: 100px;
   background-repeat: no-repeat;
   background-size: 100% 100px;
-  z-index: -1;
 }
 
 .wave--bottom {
@@ -204,7 +203,7 @@ body {
 
 .footer__paragraph {
   line-height: 1.5;
-  margin: 16px 50px;
+  margin: 16px 0 50px;
 }
 
 .footer__form {
@@ -291,8 +290,8 @@ body {
     flex-direction: row;
   }
   .section--white {
-    --wave-top: url("../images/bg-desktop.svg");
-    --wave-bottom: url("../images/bg-desktop.svg");
+    --wave-top: url("../images/wave-top.svg");
+    --wave-bottom: url("../images/wave-bottom.svg");
   }
   .section__container {
     flex-direction: row-reverse;
@@ -309,5 +308,26 @@ body {
     width: 45%;
     margin: 0;
     text-align: start;
+  }
+  .question {
+    --wave-top: url("../images/wave-top-question-desktop.svg");
+    --wave-bottom: url("../images/wave-bottom-question-desktop.svg");
+  }
+  .footer__container {
+    --padding-container: 110px 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  .footer__newsletter {
+    width: 50%;
+    max-width: 350px;
+    order: 1;
+  }
+  .footer__content {
+    width: 50%;
+    max-width: 300px;
+  }
+  .footer__paragraph {
+    margin: 16px 0 30px;
   }
 }
